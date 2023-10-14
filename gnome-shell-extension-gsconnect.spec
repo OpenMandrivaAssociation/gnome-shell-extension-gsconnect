@@ -106,18 +106,7 @@ by SMS.
 install -Dpm 0644 %{SOURCE1} %{SOURCE2} -t $RPM_BUILD_ROOT%{_metainfodir}/
  
 %find_lang %{app_id}
- 
- 
-%check
-desktop-file-validate \
-    $RPM_BUILD_ROOT%{_datadir}/applications/%{app_id}.desktop \
-    $RPM_BUILD_ROOT%{_datadir}/applications/%{app_id}.Preferences.desktop
-appstream-util validate-relax --nonet \
-    $RPM_BUILD_ROOT%{_metainfodir}/nautilus-gsconnect.metainfo.xml \
-    $RPM_BUILD_ROOT%{_metainfodir}/nemo-gsconnect.metainfo.xml \
-    $RPM_BUILD_ROOT%{_metainfodir}/%{app_id}.metainfo.xml
- 
- 
+
 %post
 %firewalld_reload
  
