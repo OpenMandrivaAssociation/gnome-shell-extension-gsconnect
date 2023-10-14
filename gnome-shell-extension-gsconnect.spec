@@ -1,19 +1,19 @@
+%define git 20231004
 %global debug_package %{nil}
  
 %global app_id org.gnome.Shell.Extensions.GSConnect
  
 Name:           gnome-shell-extension-gsconnect
-Version:        55
-Release:        1
+Version:        56
+Release:        0.%{git}.0
 Summary:        KDE Connect implementation for GNOME Shell
 Group:		        Graphical desktop/GNOME
 License:        GPL-2.0-or-later
 URL:            https://github.com/GSConnect/%{name}
-Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
+Source0:        https://github.com/GSConnect/gnome-shell-extension-gsconnect/archive/refs/heads/gnome-shell-extension-gsconnect-main.zip
+#Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        nautilus-gsconnect.metainfo.xml
 Source2:        nemo-gsconnect.metainfo.xml
-# Fix Firewalld path
-#Patch0:         %{name}-42-firewalld.patch
  
 BuildRequires:  desktop-file-utils
 #BuildRequires:  firewalld-filesystem
@@ -23,6 +23,7 @@ BuildRequires:  appstream-util
 BuildRequires:  meson
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(glib-2.0)
+Requires:       typelib(EBook)
 Requires:       gnome-shell
 # Needed for ssh-keygen
 Requires:       openssh
@@ -48,7 +49,6 @@ GSConnect is a complete implementation of KDE Connect especially for GNOME Shell
 with Nautilus, Chrome and Firefox integration. It is does not rely on the KDE
 Connect desktop application and will not work with it installed.
  
- 
 %package -n nautilus-gsconnect
 Summary:        Nautilus extension for GSConnect
 Requires:       gobject-introspection
@@ -66,7 +66,7 @@ enabled.
 %package -n nemo-gsconnect
 Summary:        Nemo extension for GSConnect
 Requires:       gobject-introspection
-Requires:       %{_lib}nemo-extension
+Recommends:       %{_lib}nemo-extension
 #Requires:       nemo-python
 Requires:       %{name} = %{version}-%{release}
 BuildArch:      noarch
@@ -74,7 +74,6 @@ BuildArch:      noarch
 %description -n nemo-gsconnect
 The nemo-gsconnect package provides a Nemo context menu for sending files to
 devices that are online, paired and have the "Share and receive" plugin enabled.
- 
  
 %package -n webextension-gsconnect
 Summary:        Web browser integration for GSConnect
@@ -90,8 +89,7 @@ by SMS.
  
  
 %prep
-%autosetup -p0 -n %{name}-%{version}%{?prerelease:-%{prerelease}}
- 
+%autosetup -p0 -n gnome-shell-extension-gsconnect-main
  
 %build
 %meson \
@@ -106,9 +104,6 @@ by SMS.
 install -Dpm 0644 %{SOURCE1} %{SOURCE2} -t $RPM_BUILD_ROOT%{_metainfodir}/
  
 %find_lang %{app_id}
-
-%post
-%firewalld_reload
  
 %files -f %{app_id}.lang
 %doc CONTRIBUTING.md README.md
@@ -122,16 +117,13 @@ install -Dpm 0644 %{SOURCE1} %{SOURCE2} -t $RPM_BUILD_ROOT%{_metainfodir}/
 %{_libdir}/firewalld/services/gsconnect.xml
 %{_metainfodir}/%{app_id}.metainfo.xml
  
- 
 %files -n nautilus-gsconnect
 %{_datadir}/nautilus-python/extensions/nautilus-gsconnect.py
 %{_metainfodir}/nautilus-gsconnect.metainfo.xml
  
- 
 %files -n nemo-gsconnect
 %{_datadir}/nemo-python/extensions/nemo-gsconnect.py
 %{_metainfodir}/nemo-gsconnect.metainfo.xml
- 
  
 %files -n webextension-gsconnect
 %{_libdir}/mozilla/native-messaging-hosts/
