@@ -119,7 +119,7 @@ install -Dpm 0644 %{SOURCE1} %{SOURCE2} -t $RPM_BUILD_ROOT%{_metainfodir}/
 %{_datadir}/dbus-1/services/%{app_id}.service
 %{_datadir}/glib-2.0/schemas/%{app_id}.gschema.xml
 %{_datadir}/icons/hicolor/scalable/apps/*.svg
-%{_prefix}/firewalld/services/gsconnect.xml
+%{_libdir}/firewalld/services/gsconnect.xml
 %{_metainfodir}/%{app_id}.metainfo.xml
  
  
