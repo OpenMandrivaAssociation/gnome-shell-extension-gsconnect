@@ -1,15 +1,17 @@
+%define git 20231004
 %global debug_package %{nil}
  
 %global app_id org.gnome.Shell.Extensions.GSConnect
  
 Name:           gnome-shell-extension-gsconnect
-Version:        55
-Release:        1
+Version:        56
+Release:        0.git.0
 Summary:        KDE Connect implementation for GNOME Shell
 Group:		        Graphical desktop/GNOME
 License:        GPL-2.0-or-later
 URL:            https://github.com/GSConnect/%{name}
-Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
+Source0:        https://github.com/GSConnect/gnome-shell-extension-gsconnect/archive/refs/heads/gnome-shell-extension-gsconnect-main.zip
+#Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        nautilus-gsconnect.metainfo.xml
 Source2:        nemo-gsconnect.metainfo.xml
 # Fix Firewalld path
@@ -90,7 +92,7 @@ by SMS.
  
  
 %prep
-%autosetup -p0 -n %{name}-%{version}%{?prerelease:-%{prerelease}}
+%autosetup -p0 -n gnome-shell-extension-gsconnect-main
  
  
 %build
