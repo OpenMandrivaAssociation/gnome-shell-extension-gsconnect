@@ -38,6 +38,11 @@ Recommends:     canberra-gtk3
 Suggests:       (nautilus-gsconnect = %{version}-%{release} if nautilus)
 Suggests:       (nemo-gsconnect = %{version}-%{release} if nemo)
 Suggests:       webextension-gsconnect = %{version}-%{release}
+
+Provides:      gsconnect
+
+# Pick on kdeconnect ot gsconnect
+Conflicts:     kdeconnect
  
 %description
 The KDE Connect project allows devices to securely share content such as
@@ -62,12 +67,11 @@ The nautilus-gsconnect package provides a Nautilus context menu for sending
 files to devices that are online, paired and have the "Share and receive" plugin
 enabled.
  
- 
 %package -n nemo-gsconnect
 Summary:        Nemo extension for GSConnect
 Requires:       gobject-introspection
-Recommends:       %{_lib}nemo-extension
-#Requires:       nemo-python
+Recommends:     %{_lib}nemo-extension
+Recommends:     nemo-python
 Requires:       %{name} = %{version}-%{release}
 BuildArch:      noarch
  
@@ -86,7 +90,6 @@ Vivaldi, Opera (and other Browser Extension, Chrome Extension or WebExtensions
 capable browsers) to interact with GSConnect, using the Share plugin to open
 links in device browsers and the Telephony plugin to share links with contacts
 by SMS.
- 
  
 %prep
 %autosetup -p0 -n gnome-shell-extension-gsconnect-main
