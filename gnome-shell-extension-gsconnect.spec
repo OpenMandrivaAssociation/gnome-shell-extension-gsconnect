@@ -4,38 +4,36 @@
  
 Name:           gnome-shell-extension-gsconnect
 Version:        55
-Release:        2%{?dist}
+Release:        1
 Summary:        KDE Connect implementation for GNOME Shell
- 
+Group:		        Graphical desktop/GNOME
 License:        GPL-2.0-or-later
 URL:            https://github.com/GSConnect/%{name}
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        nautilus-gsconnect.metainfo.xml
 Source2:        nemo-gsconnect.metainfo.xml
 # Fix Firewalld path
-Patch0:         %{name}-42-firewalld.patch
+#Patch0:         %{name}-42-firewalld.patch
  
 BuildRequires:  desktop-file-utils
-BuildRequires:  firewalld-filesystem
-BuildRequires:  gcc
+#BuildRequires:  firewalld-filesystem
 BuildRequires:  gettext
 BuildRequires:  gtk4
-BuildRequires:  libappstream-glib
+BuildRequires:  appstream-util
 BuildRequires:  meson
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(glib-2.0)
-Requires:       firewalld-filesystem
 Requires:       gnome-shell
 # Needed for ssh-keygen
 Requires:       openssh
 # Needed for ssh-add
 Requires:       openssh-clients
 Requires:       openssl
-Requires:       /usr/bin/ffmpeg
-Requires(post): firewalld-filesystem
+Requires:       ffmpeg
+#Requires(post): firewalld-filesystem
 Recommends:     evolution-data-server
 Recommends:     gsound
-Recommends:     libcanberra-gtk3
+Recommends:     canberra-gtk3
 Suggests:       (nautilus-gsconnect = %{version}-%{release} if nautilus)
 Suggests:       (nemo-gsconnect = %{version}-%{release} if nemo)
 Suggests:       webextension-gsconnect = %{version}-%{release}
@@ -54,7 +52,7 @@ Connect desktop application and will not work with it installed.
 %package -n nautilus-gsconnect
 Summary:        Nautilus extension for GSConnect
 Requires:       gobject-introspection
-Requires:       nautilus-extensions
+Requires:       %{_lib}nautilus-extension4
 Requires:       nautilus-python
 Requires:       %{name} = %{version}-%{release}
 BuildArch:      noarch
@@ -68,8 +66,8 @@ enabled.
 %package -n nemo-gsconnect
 Summary:        Nemo extension for GSConnect
 Requires:       gobject-introspection
-Requires:       nemo-extensions
-Requires:       nemo-python
+Requires:       %{_lib}nemo-extension
+#Requires:       nemo-python
 Requires:       %{name} = %{version}-%{release}
 BuildArch:      noarch
  
@@ -80,7 +78,7 @@ devices that are online, paired and have the "Share and receive" plugin enabled.
  
 %package -n webextension-gsconnect
 Summary:        Web browser integration for GSConnect
-Requires:       mozilla-filesystem
+Requires:       firefox
 Requires:       %{name} = %{version}-%{release}
  
 %description -n webextension-gsconnect
