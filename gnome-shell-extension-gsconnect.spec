@@ -50,7 +50,6 @@ GSConnect is a complete implementation of KDE Connect especially for GNOME Shell
 with Nautilus, Chrome and Firefox integration. It is does not rely on the KDE
 Connect desktop application and will not work with it installed.
  
- 
 %package -n nautilus-gsconnect
 Summary:        Nautilus extension for GSConnect
 Requires:       gobject-introspection
@@ -68,7 +67,7 @@ enabled.
 %package -n nemo-gsconnect
 Summary:        Nemo extension for GSConnect
 Requires:       gobject-introspection
-Requires:       %{_lib}nemo-extension
+Recommends:       %{_lib}nemo-extension
 #Requires:       nemo-python
 Requires:       %{name} = %{version}-%{release}
 BuildArch:      noarch
@@ -76,7 +75,6 @@ BuildArch:      noarch
 %description -n nemo-gsconnect
 The nemo-gsconnect package provides a Nemo context menu for sending files to
 devices that are online, paired and have the "Share and receive" plugin enabled.
- 
  
 %package -n webextension-gsconnect
 Summary:        Web browser integration for GSConnect
