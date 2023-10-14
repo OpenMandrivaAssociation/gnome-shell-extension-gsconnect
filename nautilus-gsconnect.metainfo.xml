@@ -1,0 +1,13 @@
+nautilus-gsconnect nautilus.desktop Nautilus extension for GSConnect Nautilus extension for GSConnect https://github.com/andyholmes/gnome-shell-extension-gsconnect/ CC0-1.0 GPL-2.0-only melmorabity@fedoraproject.org
+This XML file does not appear to have any style information associated with it. The document tree is shown below.
+<component type="addon">
+<id>nautilus-gsconnect</id>
+<extends>nautilus.desktop</extends>
+<name>Nautilus extension for GSConnect</name>
+<summary>Nautilus extension for GSConnect</summary>
+<url type="homepage">https://github.com/andyholmes/gnome-shell-extension-gsconnect/</url>
+<metadata_license>CC0-1.0</metadata_license>
+<project_license>GPL-2.0-only</project_license>
+<update_contact>melmorabity@fedoraproject.org</update_contact>
+...
+</component>
