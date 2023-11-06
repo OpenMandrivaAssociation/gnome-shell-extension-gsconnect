@@ -1,17 +1,17 @@
-%define git 20231004
+#define git 20231004
 %global debug_package %{nil}
  
 %global app_id org.gnome.Shell.Extensions.GSConnect
  
 Name:           gnome-shell-extension-gsconnect
 Version:        56
-Release:        0.%{git}.0
+Release:        1
 Summary:        KDE Connect implementation for GNOME Shell
 Group:		        Graphical desktop/GNOME
 License:        GPL-2.0-or-later
 URL:            https://github.com/GSConnect/%{name}
-Source0:        https://github.com/GSConnect/gnome-shell-extension-gsconnect/archive/refs/heads/gnome-shell-extension-gsconnect-main.zip
-#Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
+#Source0:        https://github.com/GSConnect/gnome-shell-extension-gsconnect/archive/refs/heads/gnome-shell-extension-gsconnect-main.zip
+Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        nautilus-gsconnect.metainfo.xml
 Source2:        nemo-gsconnect.metainfo.xml
  
@@ -92,7 +92,7 @@ links in device browsers and the Telephony plugin to share links with contacts
 by SMS.
  
 %prep
-%autosetup -p0 -n gnome-shell-extension-gsconnect-main
+%autosetup -p1 -n gnome-shell-extension-gsconnect-%{version}
  
 %build
 %meson \
