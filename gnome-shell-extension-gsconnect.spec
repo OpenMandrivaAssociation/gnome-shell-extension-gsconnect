@@ -4,7 +4,7 @@
 %global app_id org.gnome.Shell.Extensions.GSConnect
  
 Name:           gnome-shell-extension-gsconnect
-Version:        67
+Version:        71
 Release:        1
 Summary:        KDE Connect implementation for GNOME Shell
 Group:		        Graphical desktop/GNOME
