@@ -5,7 +5,7 @@
  
 Name:           gnome-shell-extension-gsconnect
 Version:        71
-Release:        2
+Release:        3
 Summary:        KDE Connect implementation for GNOME Shell
 Group:		        Graphical desktop/GNOME
 License:        GPL-2.0-or-later
